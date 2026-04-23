@@ -5,6 +5,13 @@ terraform {
     }
   }
 }
+variable "private_key" {
+  type        = string
+  description = "The contents of the Snowflake private key (.p8)"
+  sensitive   = true
+}
+
+
 #local keys generated
 locals {
   organization_name = "fozmvxs"
