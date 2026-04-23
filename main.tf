@@ -18,7 +18,7 @@ provider "snowflake" {
     user              = "TERRAFORM_SVC"
     role              = "SYSADMIN"
     authenticator     = "SNOWFLAKE_JWT"
-    private_key       = file(local.private_key_path)
+    private_key       = var.private_key
 }
 resource "snowflake_database" "tf_db" {
   name         = "FINTECT_DB"
@@ -57,8 +57,7 @@ provider "snowflake" {
     role              = "USERADMIN"
     alias             = "useradmin"
     authenticator     = "SNOWFLAKE_JWT"
-    private_key       = file(local.private_key_path)
-}
+    private_key       = var.private_key
 
 # Create a new role using USERADMIN
 resource "snowflake_account_role" "tf_role" {
