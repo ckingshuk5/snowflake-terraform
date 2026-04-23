@@ -144,30 +144,30 @@ resource "snowflake_grant_privileges_to_account_role" "grant_future_tables" {
   }
 }
 
-#create a new database for apple project
-resource "snowflake_database" "apple_src" {
-  name         = "apple"
+#create a new database for orange project
+resource "snowflake_database" "orange_src" {
+  name         = "orange"
   is_transient = false
 }
 
 
-# Create a new schema in the apple db 
-resource "snowflake_schema" "apple_src_apple_schema" {
+# Create a new schema in the orange db 
+resource "snowflake_schema" "orange_src_orange_schema" {
   name                = "source"
-  database            = snowflake_database.apple_src.name
+  database            = snowflake_database.orange_src.name
   with_managed_access = false
 }
 
-# Create a new schema in the apple db 
-resource "snowflake_schema" "apple_src_release_schema" {
+# Create a new schema in the orange db 
+resource "snowflake_schema" "orange_src_release_schema" {
   name                = "release"
-  database            = snowflake_database.apple_src.name
+  database            = snowflake_database.orange_src.name
   with_managed_access = false
 }
 
-# Create a new schema in the apple db 
-resource "snowflake_schema" "apple_src_target_schema" {
+# Create a new schema in the orange db 
+resource "snowflake_schema" "orange_src_target_schema" {
   name                = "target"
-  database            = snowflake_database.apple_src.name
+  database            = snowflake_database.orange_src.name
   with_managed_access = false
 }
