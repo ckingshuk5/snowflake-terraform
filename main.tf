@@ -5,6 +5,13 @@ terraform {
     }
   }
 }
+variable "private_key" {
+  type        = string
+  description = "The contents of the Snowflake private key (.p8)"
+  sensitive   = true
+}
+
+
 #local keys generated
 locals {
   organization_name = "fozmvxs"
@@ -18,7 +25,7 @@ provider "snowflake" {
     user              = "TERRAFORM_SVC"
     role              = "SYSADMIN"
     authenticator     = "SNOWFLAKE_JWT"
-    private_key       = file(local.private_key_path)
+    private_key       = var.private_key
 }
 resource "snowflake_database" "tf_db" {
   name         = "FINTECT_DB"
@@ -57,7 +64,7 @@ provider "snowflake" {
     role              = "USERADMIN"
     alias             = "useradmin"
     authenticator     = "SNOWFLAKE_JWT"
-    private_key       = file(local.private_key_path)
+    private_key       = var.private_key
 }
 
 # Create a new role using USERADMIN
@@ -144,30 +151,30 @@ resource "snowflake_grant_privileges_to_account_role" "grant_future_tables" {
   }
 }
 
-#create a new database for apple project
-resource "snowflake_database" "apple_src" {
-  name         = "apple"
+#create a new database for orange project
+resource "snowflake_database" "orange_src" {
+  name         = "orange"
   is_transient = false
 }
 
 
-# Create a new schema in the apple db 
-resource "snowflake_schema" "apple_src_apple_schema" {
+# Create a new schema in the orange db 
+resource "snowflake_schema" "orange_src_orange_schema" {
   name                = "source"
-  database            = snowflake_database.apple_src.name
+  database            = snowflake_database.orange_src.name
   with_managed_access = false
 }
 
-# Create a new schema in the apple db 
-resource "snowflake_schema" "apple_src_release_schema" {
+# Create a new schema in the orange db 
+resource "snowflake_schema" "orange_src_release_schema" {
   name                = "release"
-  database            = snowflake_database.apple_src.name
+  database            = snowflake_database.orange_src.name
   with_managed_access = false
 }
 
-# Create a new schema in the apple db 
-resource "snowflake_schema" "apple_src_target_schema" {
+# Create a new schema in the orange db 
+resource "snowflake_schema" "orange_src_target_schema" {
   name                = "target"
-  database            = snowflake_database.apple_src.name
+  database            = snowflake_database.orange_src.name
   with_managed_access = false
 }
