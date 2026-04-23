@@ -58,6 +58,7 @@ provider "snowflake" {
     alias             = "useradmin"
     authenticator     = "SNOWFLAKE_JWT"
     private_key       = var.private_key
+}
 
 # Create a new role using USERADMIN
 resource "snowflake_account_role" "tf_role" {
