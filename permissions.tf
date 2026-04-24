@@ -12,7 +12,12 @@ resource "snowflake_grant_privileges_to_account_role" "db_grants" {
 
 # Grant usage on Schemas
 resource "snowflake_grant_privileges_to_account_role" "schema_grants" {
-  for_each          = toset([snowflake_schema.sales_raw.fully_qualified_name, snowflake_schema.hr_sensitive.fully_qualified_name])
+  for_each = {
+    ibor         = snowflake_schema.ibor_schema.fully_qualified_name
+    ism          = snowflake_schema.ism_schema.fully_qualified_name
+    data_product = snowflake_schema.data_product_schema.fully_qualified_name
+    apple        = snowflake_schema.apple_schema.fully_qualified_name
+  }
   privileges        = ["USAGE", "CREATE TABLE"]
   account_role_name = snowflake_account_role.additional_role.name
   on_schema {
