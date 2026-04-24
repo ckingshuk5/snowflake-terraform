@@ -8,3 +8,5 @@ output "databases_created" {
     snowflake_database.data_product_db.name, snowflake_database.apple_src_db.name]
 }
 
+
+
