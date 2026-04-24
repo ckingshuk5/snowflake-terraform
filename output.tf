@@ -3,5 +3,5 @@ output "debug_account_n" {
 }
 
 output "debug_account_c" {
-  value = var.account_name_n
+  value = var.account_name_c
 }
