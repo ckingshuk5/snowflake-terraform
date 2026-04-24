@@ -17,7 +17,7 @@ variable "custom_role_name_n" {
 
 variable "account_name_c" { 
     type = string 
-    default = "UO09458" 
+    default = "NXFFBTH-UO09458" 
     }
 variable "user_name_c"    { 
     type = string 
