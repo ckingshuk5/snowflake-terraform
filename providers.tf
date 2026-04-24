@@ -34,7 +34,7 @@ module "deploy_to_n" {
   custom_role_name = var.custom_role_name_n
 }
 
-# Deploy to Account Cortex
+# Deploy to Account Cortex can't bedone ?
 module "deploy_to_c" {
   source = "./modules/snowflake_standard"
   providers = {
