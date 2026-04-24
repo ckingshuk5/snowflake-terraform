@@ -1,5 +1,5 @@
 # Schema for ibor_db
-resource "snowflake_schema" "ibor_schema"{
+resource "snowflake_schema" "ibor_schema" {
   database = snowflake_database.ibor_db.name
   name     = "IBOR"
 }

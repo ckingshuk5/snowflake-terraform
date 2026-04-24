@@ -31,6 +31,7 @@ module "deploy_to_n" {
   providers = {
     snowflake = snowflake.normal
   }
+  custom_role_name = var.custom_role_name_n
 }
 
 # Deploy to Account Cortex
@@ -39,4 +40,5 @@ module "deploy_to_c" {
   providers = {
     snowflake = snowflake.cortex
   }
+  custom_role_name = var.custom_role_name_c
 }
