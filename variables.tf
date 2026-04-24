@@ -1,14 +1,35 @@
-variable "account_name" { 
+variable "account_name_n" { 
     type = string 
     default = "xq47575" 
     }
-variable "user_name"    { 
+variable "user_name_n"    { 
     type = string 
     default = "TERRAFORM_SVC" 
     }
-variable "organization_name"    { 
+variable "organization_name_n"    { 
     type = string 
     default = "fozmvxs"   
+}
+variable "custom_role_name_n" {
+  type    = string
+  default = "DATA_ENGINEER_ROLE"
+}
+
+variable "account_name_c" { 
+    type = string 
+    default = "UO09458" 
+    }
+variable "user_name_c"    { 
+    type = string 
+    default = "TERRAFORM_SVC" 
+    }
+variable "organization_name_c"    { 
+    type = string 
+    default = "NXFFBTH"   
+}
+variable "custom_role_name_c" {
+  type    = string
+  default = "AI_ENGINEER_ROLE"
 }
 
 variable "private_key" {
@@ -22,7 +43,3 @@ variable "private_key_path" {
   default   = "/home/kingshuk/.ssh/snowflake_tf_snow_key.p8"
 }
 
-variable "custom_role_name" {
-  type    = string
-  default = "DATA_ENGINEER_ROLE"
-}
